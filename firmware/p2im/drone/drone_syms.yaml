@@ -1,0 +1,116 @@
+- name: LoopCopyDataInit.bcc
+  addr: [0x8004f58]
+  handler: native.nop
+- name: HAL_GPIO_Init
+  addr: [0x8001264]
+  handler: native.return_constant
+  native_args: [0] # HAL_OK
+- name: HAL_GPIO_TogglePin
+  addr: [0x800142e]
+  handler: surgeon.stm32_gpio_togglepin
+- name: HAL_GPIO_WritePin
+  addr: [0x8001424]
+  handler: surgeon.stm32_gpio_writepin
+# - name: HAL_I2C_Init
+#   addr: [0x8001754]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_I2C_Mem_Read
+  addr: [0x8001938]
+  handler: surgeon.stm32_i2c_mem_read
+- name: HAL_I2C_Mem_Write
+  addr: [0x8001828]
+#   handler: halucinator.bp_handlers.stm32f4.stm32f4_i2c.STM32F4I2C.mem_write
+  handler: native.return_constant
+  native_args: [0] # HAL_OK
+# - name: HAL_I2C_MspInit
+#   addr: [0x8004d24]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_Init
+#   addr: [0x8001128]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_MspInit
+#   addr: [0x8004ca8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_NVIC_EnableIRQ
+  addr: [0x80011fc]
+  handler: surgeon.stm32_nvic_enableirq
+# - name: HAL_NVIC_SetPriority
+#   addr: [0x8001194]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_NVIC_SetPriorityGrouping
+#   addr: [0x8001170]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_RCC_ClockConfig
+  addr: [0x800209c]
+  handler: native.return_constant
+  native_args: [0] # HAL_OK
+# - name: HAL_RCC_GetHCLKFreq
+#   addr: [0x8002214]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_RCC_GetPCLK1Freq
+#   addr: [0x8002220]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_RCC_GetPCLK2Freq
+#   addr: [0x8002250]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_RCC_GetSysClockFreq
+#   addr: [0x8002008]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_RCC_OscConfig
+  addr: [0x8001b58]
+  handler: native.return_constant
+  native_args: [0] # HAL_OK
+# - name: HAL_SYSTICK_CLKSourceConfig
+#   addr: [0x8001240]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_SYSTICK_Config
+  addr: [0x8001214]
+  handler: surgeon.stm32_timers_systick_config
+# - name: HAL_SYSTICK_IRQHandler
+#   addr: [0x800125a]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIMEx_ConfigBreakDeadTime
+#   addr: [0x8002564]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIMEx_MasterConfigSynchronization
+#   addr: [0x80025a4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIM_MspPostInit
+#   addr: [0x8004df0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIM_PWM_ConfigChannel
+#   addr: [0x800245c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIM_PWM_Init
+#   addr: [0x80023d0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIM_PWM_MspInit
+#   addr: [0x8004d68]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_TIM_PWM_Start
+#   addr: [0x8002538]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: HAL_UART_Init
+#   addr: [0x8002724]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_UART_IRQHandler
+  addr: [0x800299a]
+  handler: native.detour
+  native_args: ["HAL_UART_RxCpltCallback"]
+# - name: HAL_UART_MspInit
+#   addr: [0x8004e58]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_UART_Receive_IT
+  addr: [0x80028a6]
+  handler: surgeon.stm32_uart_receive_it
+- name: HAL_UART_RxCpltCallback
+  addr: [0x8004c0c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: HAL_UART_Transmit
+  addr: [0x800277c]
+#   handler: halucinator.bp_handlers.stm32f4.stm32f4_uart.STM32F4UART.handle_tx
+  handler: native.return_constant
+  native_args: [0] # HAL_OK
+- name: UART_Receive_IT
+  addr: [0x800290c]
+  handler: halucinator.bp_handlers.generic.Abort.abort

@@ -1,0 +1,1515 @@
+# - name: _hex_chars
+#   addr: [0x0]
+#   handler: surgeon.generic_common_abort
+# - name: vector_cpu
+#   addr: [0x40]
+#   handler: surgeon.generic_common_abort
+# - name: vector_padding
+#   addr: [0x1d8]
+#   handler: surgeon.generic_common_abort
+# - name: flash_configuration_field
+#   addr: [0x400]
+#   handler: surgeon.generic_common_abort
+# - name: _init
+#   addr: [0x410]
+#   handler: surgeon.generic_common_abort
+# - name: _fini
+#   addr: [0x41c]
+#   handler: surgeon.generic_common_abort
+# - name: _sbrk_r
+#   addr: [0x428]
+#   handler: surgeon.generic_common_abort
+# - name: _read_r
+#   addr: [0x490]
+#   handler: surgeon.generic_common_abort
+# - name: _write_r
+#   addr: [0x4b2]
+#   handler: surgeon.generic_common_abort
+# - name: _close_r
+#   addr: [0x4d4]
+#   handler: surgeon.generic_common_abort
+# - name: _lseek_r
+#   addr: [0x4f2]
+#   handler: surgeon.generic_common_abort
+# - name: _fstat_r
+#   addr: [0x514]
+#   handler: surgeon.generic_common_abort
+# - name: _isatty_r
+#   addr: [0x534]
+#   handler: surgeon.generic_common_abort
+# - name: bitarithm_lsb
+#   addr: [0x566]
+#   handler: surgeon.generic_common_abort
+# - name: clist_rpush
+#   addr: [0x58e]
+#   handler: surgeon.generic_common_abort
+# - name: clist_lpop
+#   addr: [0x5ca]
+#   handler: surgeon.generic_common_abort
+# - name: sched_run
+#   addr: [0x610]
+#   handler: surgeon.generic_common_abort
+# - name: sched_set_status
+#   addr: [0x698]
+#   handler: surgeon.generic_common_abort
+# - name: sched_switch
+#   addr: [0x738]
+#   handler: surgeon.generic_common_abort
+- name: sched_task_exit
+  addr: [0x794]
+  handler: surgeon.riot_sched_task_exit
+- name: sched_task_exit
+  addr: [0x794]
+# - name: thread_stack_init
+#   addr: [0x7dc]
+#   handler: surgeon.generic_common_abort
+# - name: thread_isr_stack_usage
+#   addr: [0x8b8]
+#   handler: surgeon.generic_common_abort
+- name: thread_isr_stack_pointer
+  addr: [0x900]
+  handler: surgeon.riot_thread_isr_stack_pointer
+# - name: thread_isr_stack_start
+#   addr: [0x91c]
+#   handler: surgeon.generic_common_abort
+- name: cpu_switch_context_exit
+  addr: [0x930]
+  handler: surgeon.riot_cpu_switch_context_exit
+# - name: unreachable381
+#   addr: [0x936]
+#   handler: surgeon.generic_common_abort
+# - name: thread_yield_higher
+#   addr: [0x93c]
+#   handler: surgeon.generic_common_abort
+- name: isr_pendsv
+  addr: [0x958]
+  handler: native.skip
+# - name: isr_svc
+#   addr: [0x974]
+#   handler: surgeon.generic_common_abort
+# - name: context_restore
+#   addr: [0x978]
+#   handler: surgeon.generic_common_abort
+# - name: post_startup
+#   addr: [0x990]
+#   handler: surgeon.generic_common_abort
+- name: reset_handler_default
+  addr: [0x99c]
+#   handler: surgeon.generic_common_abort
+- name: reset_handler_default.stack_init.bcc
+  addr: [0x9c4]
+  handler: native.nop
+- name: reset_handler_default.data_init.bcc
+  addr: [0x9e2]
+  handler: native.nop
+# - name: nmi_default
+#   addr: [0xa30]
+#   handler: surgeon.generic_common_abort
+# - name: message
+#   addr: [0xa3c]
+#   handler: surgeon.generic_common_abort
+# - name: _stack_size_left
+#   addr: [0xa40]
+#   handler: surgeon.generic_common_abort
+# - name: hard_fault_default
+#   addr: [0xa64]
+#   handler: surgeon.generic_common_abort
+# - name: fix_msp
+#   addr: [0xa78]
+#   handler: surgeon.generic_common_abort
+# - name: test_sp
+#   addr: [0xa7e]
+#   handler: surgeon.generic_common_abort
+# - name: use_psp
+#   addr: [0xa8c]
+#   handler: surgeon.generic_common_abort
+# - name: out
+#   addr: [0xa90]
+#   handler: surgeon.generic_common_abort
+# - name: hard_fault_handler
+#   addr: [0xaa8]
+#   handler: surgeon.generic_common_abort
+# - name: mem_manage_default
+#   addr: [0xc80]
+#   handler: surgeon.generic_common_abort
+# - name: bus_fault_default
+#   addr: [0xc90]
+#   handler: surgeon.generic_common_abort
+# - name: usage_fault_default
+#   addr: [0xca0]
+#   handler: surgeon.generic_common_abort
+# - name: debug_mon_default
+#   addr: [0xcb0]
+#   handler: surgeon.generic_common_abort
+# - name: dummy_handler_default
+#   addr: [0xcc0]
+#   handler: surgeon.generic_common_abort
+# - name: irq_disable
+#   addr: [0xcd0]
+#   handler: halucinator.bp_handlers.riot.riot_nvic.RIOTNVIC.irq_disable
+# - name: irq_enable
+#   addr: [0xcee]
+#   handler: halucinator.bp_handlers.riot.riot_nvic.RIOTNVIC.irq_enable
+# - name: irq_restore
+#   addr: [0xd08]
+#   handler: halucinator.bp_handlers.riot.riot_nvic.RIOTNVIC.irq_enable # TODO: proper save/restore
+# - name: irq_is_in
+#   addr: [0xd24]
+#   handler: surgeon.generic_common_abort
+# - name: bitband_addr
+#   addr: [0xd3e]
+#   handler: surgeon.generic_common_abort
+# - name: bit_clear32
+#   addr: [0xd70]
+#   handler: surgeon.generic_common_abort
+# - name: cpu_errata_fixes
+#   addr: [0xd94]
+#   handler: surgeon.generic_common_abort
+# - name: ptr
+#   addr: [0xda4]
+#   handler: surgeon.generic_common_abort
+- name: pre_startup
+  addr: [0xda8]
+  handler: native.skip
+# - name: dummy_handler
+#   addr: [0xdb8]
+#   handler: surgeon.generic_common_abort
+# - name: wdog_disable
+#   addr: [0xdc4]
+#   handler: surgeon.generic_common_abort
+# - name: uart_stdio_init
+#   addr: [0xdec]
+#   handler: surgeon.generic_common_abort
+# - name: arg
+#   addr: [0xe04]
+#   handler: surgeon.generic_common_abort
+# - name: rx_cb
+#   addr: [0xe08]
+#   handler: surgeon.generic_common_abort
+# - name: uart_stdio_read
+#   addr: [0xe0c]
+#   handler: surgeon.generic_common_abort
+# - name: isrpipe
+#   addr: [0xe2c]
+#   handler: surgeon.generic_common_abort
+# - name: uart_stdio_write
+#   addr: [0xe30]
+#   handler: surgeon.generic_common_abort
+# - name: pm_off
+#   addr: [0xe50]
+#   handler: surgeon.generic_common_abort
+# - name: board_init
+#   addr: [0xe5c]
+#   handler: surgeon.generic_common_abort
+# - name: cpu_print_last_instruction
+#   addr: [0xed0]
+#   handler: surgeon.generic_common_abort
+# - name: panic_arch
+#   addr: [0xef0]
+#   handler: surgeon.generic_common_abort
+# - name: core_panic
+#   addr: [0xefc]
+#   handler: surgeon.generic_common_abort
+# - name: main_trampoline
+#   addr: [0xf54]
+#   handler: surgeon.generic_common_abort
+# - name: idle_thread
+#   addr: [0xf78]
+#   handler: surgeon.generic_common_abort
+# - name: kernel_init
+#   addr: [0xf84]
+#   handler: surgeon.generic_common_abort
+# - name: function
+#   addr: [0xfd0]
+#   handler: surgeon.generic_common_abort
+# - name: stack
+#   addr: [0xfd4]
+#   handler: surgeon.generic_common_abort
+# - name: cib_init
+#   addr: [0xfe4]
+#   handler: surgeon.generic_common_abort
+# - name: thread_add_to_list
+#   addr: [0x102c]
+#   handler: surgeon.generic_common_abort
+- name: thread_measure_stack_free
+  addr: [0x1098]
+  handler: native.return_constant
+  native_args: [0x4000] # Just tons of free space, similar to hal-fuzz
+- name: thread_create
+  addr: [0x10cc]
+  handler: surgeon.riot_thread_create
+# - name: cpu_init
+#   addr: [0x126c]
+#   handler: surgeon.generic_common_abort
+# - name: mutex_lock
+#   addr: [0x1294]
+#   handler: surgeon.generic_common_abort
+# - name: isrpipe_write_one
+#   addr: [0x12ac]
+#   handler: surgeon.generic_common_abort
+# - name: isrpipe_read
+#   addr: [0x12da]
+#   handler: surgeon.generic_common_abort
+- name: NVIC_EnableIRQ
+  addr: [0x1310]
+  handler: surgeon.riot_nvic_enableirq
+# - name: cortexm_isr_end
+#   addr: [0x1340]
+#   handler: surgeon.generic_common_abort
+# - name: bitband_addr_0
+#   addr: [0x1358]
+#   handler: surgeon.generic_common_abort
+# - name: bit_set32
+#   addr: [0x138a]
+#   handler: surgeon.generic_common_abort
+# - name: uart_init
+#   addr: [0x13b0]
+#   handler: surgeon.generic_common_abort
+# - name: uart_init_pins
+#   addr: [0x143c]
+#   handler: surgeon.generic_common_abort
+# - name: uart_init_uart
+#   addr: [0x14b4]
+#   handler: surgeon.generic_common_abort
+- name: uart_write
+  addr: [0x15c0]
+  handler: surgeon.riot_uart_uart_write
+# - name: irq_handler_uart
+#   addr: [0x1614]
+#   handler: surgeon.generic_common_abort
+# - name: isr_uart0_rx_tx
+#   addr: [0x1674]
+#   handler: surgeon.generic_common_abort
+# - name: bitband_addr_1
+#   addr: [0x1682]
+#   handler: surgeon.generic_common_abort
+# - name: bit_set32_0
+#   addr: [0x16b4]
+#   handler: surgeon.generic_common_abort
+# - name: bit_set8
+#   addr: [0x16d8]
+#   handler: surgeon.generic_common_abort
+# - name: bit_clear8
+#   addr: [0x16fc]
+#   handler: surgeon.generic_common_abort
+- name: kinetis_mcg_disable_pll
+  addr: [0x1720]
+  handler: native.skip
+- name: kinetis_mcg_set_fll_factor
+  addr: [0x1734]
+  handler: native.skip
+- name: kinetis_mcg_enable_osc
+  addr: [0x1764]
+  handler: native.skip
+- name: kinetis_mcg_init_erclk32k
+  addr: [0x17c8]
+  handler: native.skip
+- name: kinetis_mcg_init_mcgirclk
+  addr: [0x1818]
+  handler: native.skip
+- name: kinetis_mcg_set_fei
+  addr: [0x18a8]
+  handler: native.skip
+- name: kinetis_mcg_set_fee
+  addr: [0x1908]
+  handler: native.skip
+- name: kinetis_mcg_set_fbi
+  addr: [0x194c]
+  handler: native.skip
+- name: kinetis_mcg_set_fbe
+  addr: [0x19ac]
+  handler: native.skip
+- name: kinetis_mcg_set_blpi
+  addr: [0x1a04]
+  handler: native.skip
+- name: kinetis_mcg_set_blpe
+  addr: [0x1a28]
+  handler: native.skip
+- name: kinetis_mcg_set_pbe
+  addr: [0x1a4c]
+  handler: native.skip
+- name: kinetis_mcg_set_pee
+  addr: [0x1ac0]
+  handler: native.skip
+- name: kinetis_mcg_set_mode
+  addr: [0x1afc]
+  handler: native.skip
+# - name: jpt_1B2A
+#   addr: [0x1b30]
+#   handler: surgeon.generic_common_abort
+# - name: def_1B2A
+#   addr: [0x1b80]
+#   handler: surgeon.generic_common_abort
+- name: kinetis_mcg_set_safe_mode
+  addr: [0x1ba4]
+  handler: native.skip
+- name: kinetis_mcg_init
+  addr: [0x1c70]
+  handler: native.skip
+# - name: cortexm_isr_end_0
+#   addr: [0x1cdc]
+#   handler: surgeon.generic_common_abort
+# - name: bitband_addr_2
+#   addr: [0x1cf4]
+#   handler: surgeon.generic_common_abort
+# - name: bit_set32_1
+#   addr: [0x1d26]
+#   handler: surgeon.generic_common_abort
+# - name: port
+#   addr: [0x1d4a]
+#   handler: surgeon.generic_common_abort
+# - name: gpio
+#   addr: [0x1d6c]
+#   handler: surgeon.generic_common_abort
+# - name: port_num
+#   addr: [0x1d8e]
+#   handler: surgeon.generic_common_abort
+# - name: pin_num
+#   addr: [0x1dac]
+#   handler: surgeon.generic_common_abort
+# - name: clk_en
+#   addr: [0x1dc8]
+#   handler: surgeon.generic_common_abort
+# - name: get_ctx
+#   addr: [0x1df8]
+#   handler: surgeon.generic_common_abort
+# - name: write_map
+#   addr: [0x1e30]
+#   handler: surgeon.generic_common_abort
+# - name: ctx_clear
+#   addr: [0x1eac]
+#   handler: surgeon.generic_common_abort
+# - name: gpio_init
+#   addr: [0x1ed2]
+#   handler: surgeon.generic_common_abort
+# - name: gpio_init_port
+#   addr: [0x1f66]
+#   handler: surgeon.generic_common_abort
+# - name: gpio_set
+#   addr: [0x1fdc]
+#   handler: surgeon.generic_common_abort
+# - name: irq_handler
+#   addr: [0x2008]
+#   handler: surgeon.generic_common_abort
+# - name: isr_porta
+#   addr: [0x2098]
+#   handler: surgeon.generic_common_abort
+# - name: isr_portb
+#   addr: [0x20ac]
+#   handler: surgeon.generic_common_abort
+# - name: isr_portc
+#   addr: [0x20c0]
+#   handler: surgeon.generic_common_abort
+# - name: isr_portd
+#   addr: [0x20d4]
+#   handler: surgeon.generic_common_abort
+# - name: isr_porte
+#   addr: [0x20e8]
+#   handler: surgeon.generic_common_abort
+# - name: ps
+#   addr: [0x20fc]
+#   handler: surgeon.generic_common_abort
+# - name: tsrb_empty
+#   addr: [0x2254]
+#   handler: surgeon.generic_common_abort
+# - name: tsrb_full
+#   addr: [0x2278]
+#   handler: surgeon.generic_common_abort
+# - name: _push
+#   addr: [0x22a2]
+#   handler: surgeon.generic_common_abort
+# - name: _pop
+#   addr: [0x22d4]
+#   handler: surgeon.generic_common_abort
+# - name: tsrb_get
+#   addr: [0x2300]
+#   handler: surgeon.generic_common_abort
+# - name: tsrb_add_one
+#   addr: [0x2348]
+#   handler: surgeon.generic_common_abort
+# - name: periph_init
+#   addr: [0x237a]
+#   handler: surgeon.generic_common_abort
+# - name: main
+#   addr: [0x2388]
+#   handler: surgeon.generic_common_abort
+# - name: auto_init
+#   addr: [0x23a4]
+#   handler: surgeon.generic_common_abort
+# - name: list_remove_head
+#   addr: [0x23b0]
+#   handler: surgeon.generic_common_abort
+# - name: _mutex_lock
+#   addr: [0x23d8]
+#   handler: surgeon.generic_common_abort
+# - name: mutex_unlock
+#   addr: [0x2460]
+#   handler: surgeon.generic_common_abort
+# - name: NVIC_SetPriority
+#   addr: [0x24dc]
+#   handler: surgeon.generic_common_abort
+# - name: cortexm_init
+#   addr: [0x2530]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_init
+#   addr: [0x2598]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_set_time
+#   addr: [0x25a4]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_get_time
+#   addr: [0x25c6]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_set_alarm
+#   addr: [0x25ec]
+#   handler: surgeon.generic_common_abort
+# - name: cb
+#   addr: [0x2620]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_get_alarm
+#   addr: [0x2624]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_clear_alarm
+#   addr: [0x264c]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_poweron
+#   addr: [0x2664]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_poweroff
+#   addr: [0x2670]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_cb
+#   addr: [0x267c]
+#   handler: surgeon.generic_common_abort
+# - name: NVIC_EnableIRQ_0
+#   addr: [0x26a0]
+#   handler: surgeon.generic_common_abort
+# - name: NVIC_SetPriority_0
+#   addr: [0x26d0]
+#   handler: surgeon.generic_common_abort
+# - name: cortexm_isr_end_1
+#   addr: [0x2724]
+#   handler: surgeon.generic_common_abort
+- name: rtt_init
+  addr: [0x273c]
+  handler: surgeon.riot_rtt_init
+- name: rtt_get_counter
+  addr: [0x27a8]
+  handler: surgeon.riot_rtt_get_counter
+- name: rtt_set_counter
+  addr: [0x27e8]
+  handler: surgeon.riot_rtt_set_counter
+# - name: rtt_set_alarm
+#   addr: [0x2820]
+#   handler: surgeon.generic_common_abort
+# - name: rtt_get_alarm
+#   addr: [0x287c]
+#   handler: halucinator.bp_handlers.riot.riot_timer.RIOTTimer.rtt_get_alarm
+# - name: rtt_clear_alarm
+#   addr: [0x289c]
+#   handler: surgeon.generic_common_abort
+# - name: rtt_poweron
+#   addr: [0x28d8]
+#   handler: surgeon.generic_common_abort
+# - name: rtt_poweroff
+#   addr: [0x28fc]
+#   handler: surgeon.generic_common_abort
+# - name: isr_rtc
+#   addr: [0x2920]
+#   handler: surgeon.generic_common_abort
+# - name: __sputc_r
+#   addr: [0x298c]
+#   handler: surgeon.generic_common_abort
+- name: _putchar
+  addr: [0x29e8]
+  handler: surgeon.generic_io_putc
+# - name: find_handler
+#   addr: [0x2a10]
+#   handler: surgeon.generic_common_abort
+# - name: print_help
+#   addr: [0x2a80]
+#   handler: surgeon.generic_common_abort
+# - name: handle_input_line
+#   addr: [0x2b04]
+#   handler: surgeon.generic_common_abort
+- name: readline
+  addr: [0x2d7c]
+  handler: surgeon.generic_io_readline
+# - name: print_prompt
+#   addr: [0x2e68]
+#   handler: surgeon.generic_common_abort
+# - name: shell_run
+#   addr: [0x2e8c]
+#   handler: surgeon.generic_common_abort
+# - name: _reboot_handler
+#   addr: [0x2ebc]
+#   handler: surgeon.generic_common_abort
+# - name: _ps_handler
+#   addr: [0x2ed4]
+#   handler: surgeon.generic_common_abort
+# - name: probe
+#   addr: [0x2eec]
+#   handler: surgeon.generic_common_abort
+# - name: probe_all
+#   addr: [0x2f50]
+#   handler: surgeon.generic_common_abort
+# - name: list
+#   addr: [0x2f94]
+#   handler: surgeon.generic_common_abort
+# - name: read
+#   addr: [0x3000]
+#   handler: surgeon.generic_common_abort
+# - name: write
+#   addr: [0x307c]
+#   handler: surgeon.generic_common_abort
+# - name: _saul
+#   addr: [0x318c]
+#   handler: surgeon.generic_common_abort
+# - name: _alarm_handler
+#   addr: [0x3200]
+#   handler: surgeon.generic_common_abort
+# - name: dow
+#   addr: [0x321c]
+#   handler: surgeon.generic_common_abort
+# - name: _parse_time
+#   addr: [0x32ac]
+#   handler: surgeon.generic_common_abort
+# - name: _print_time
+#   addr: [0x3398]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_getalarm
+#   addr: [0x33e0]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_setalarm
+#   addr: [0x3414]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_gettime
+#   addr: [0x3464]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_settime
+#   addr: [0x3498]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_usage
+#   addr: [0x34e0]
+#   handler: surgeon.generic_common_abort
+# - name: _rtc_handler
+#   addr: [0x3544]
+#   handler: surgeon.generic_common_abort
+- name: NVIC_SystemReset
+  addr: [0x3678]
+  handler: surgeon.generic_common_exit
+# - name: pm_reboot
+#   addr: [0x36a0]
+#   handler: surgeon.generic_common_abort
+# - name: phydat_dump
+#   addr: [0x36ac]
+#   handler: surgeon.generic_common_abort
+# - name: jpt_36E2
+#   addr: [0x36e8]
+#   handler: surgeon.generic_common_abort
+# - name: def_36E2
+#   addr: [0x373e]
+#   handler: surgeon.generic_common_abort
+# - name: phydat_unit_to_str
+#   addr: [0x385c]
+#   handler: surgeon.generic_common_abort
+# - name: jpt_3870
+#   addr: [0x3874]
+#   handler: surgeon.generic_common_abort
+# - name: def_3870
+#   addr: [0x390c]
+#   handler: surgeon.generic_common_abort
+# - name: phydat_prefix_from_scale
+#   addr: [0x3964]
+#   handler: surgeon.generic_common_abort
+# - name: jpt_397A
+#   addr: [0x3980]
+#   handler: surgeon.generic_common_abort
+# - name: def_397A
+#   addr: [0x3a28]
+#   handler: surgeon.generic_common_abort
+# - name: saul_class_to_str
+#   addr: [0x3a34]
+#   handler: surgeon.generic_common_abort
+# - name: saul_reg_find_nth
+#   addr: [0x3b9c]
+#   handler: surgeon.generic_common_abort
+# - name: saul_reg_read
+#   addr: [0x3bdc]
+#   handler: surgeon.generic_common_abort
+# - name: saul_reg_write
+#   addr: [0x3c0c]
+#   handler: surgeon.generic_common_abort
+# - name: fmt_u32_dec
+#   addr: [0x3c3c]
+#   handler: surgeon.generic_common_abort
+# - name: fmt_s32_dec
+#   addr: [0x3cd0]
+#   handler: surgeon.generic_common_abort
+# - name: fmt_s16_dfp
+#   addr: [0x3d16]
+#   handler: surgeon.generic_common_abort
+# - name: fmt_s32_dfp
+#   addr: [0x3d3c]
+#   handler: surgeon.generic_common_abort
+# - name: fmt_lpad
+#   addr: [0x3e6c]
+#   handler: surgeon.generic_common_abort
+# - name: atoi
+#   addr: [0x3eba]
+#   handler: surgeon.generic_common_abort
+# - name: __sflush_r
+#   addr: [0x3ec4]
+#   handler: surgeon.generic_common_abort
+# - name: _fflush_r
+#   addr: [0x3fd4]
+#   handler: surgeon.generic_common_abort
+# - name: fflush
+#   addr: [0x4028]
+#   handler: surgeon.generic_common_abort
+# - name: _cleanup_r
+#   addr: [0x404c]
+#   handler: surgeon.generic_common_abort
+# - name: std.isra.0
+#   addr: [0x4058]
+#   handler: surgeon.generic_common_abort
+# - name: __sfmoreglue
+#   addr: [0x40a0]
+#   handler: surgeon.generic_common_abort
+# - name: __sinit
+#   addr: [0x40cc]
+#   handler: surgeon.generic_common_abort
+# - name: __sfp
+#   addr: [0x412c]
+#   handler: surgeon.generic_common_abort
+# - name: _fwalk
+#   addr: [0x41a4]
+#   handler: surgeon.generic_common_abort
+# - name: _fwalk_reent
+#   addr: [0x41dc]
+#   handler: surgeon.generic_common_abort
+# - name: gmtime_r
+#   addr: [0x4218]
+#   handler: surgeon.generic_common_abort
+# - name: __libc_init_array
+#   addr: [0x434c]
+#   handler: surgeon.generic_common_abort
+# - name: memmove
+#   addr: [0x4394]
+#   handler: surgeon.generic_common_abort
+# - name: memset
+#   addr: [0x43c8]
+#   handler: surgeon.generic_common_abort
+# - name: validate_structure
+#   addr: [0x43d8]
+#   handler: surgeon.generic_common_abort
+# - name: mktime
+#   addr: [0x4598]
+#   handler: surgeon.generic_common_abort
+# - name: _free_r
+#   addr: [0x4890]
+#   handler: surgeon.generic_common_abort
+# - name: _malloc_r
+#   addr: [0x492c]
+#   handler: surgeon.generic_common_abort
+- name: printf
+  addr: [0x49e8]
+#  handler: native.skip
+# - name: _puts_r
+#   addr: [0x4a18]
+#   handler: surgeon.generic_common_abort
+# - name: puts
+#   addr: [0x4ad0]
+#   handler: surgeon.generic_common_abort
+# - name: __srget_r
+#   addr: [0x4ae0]
+#   handler: surgeon.generic_common_abort
+# - name: __sread
+#   addr: [0x4b38]
+#   handler: surgeon.generic_common_abort
+# - name: __seofread
+#   addr: [0x4b5a]
+#   handler: surgeon.generic_common_abort
+# - name: __swrite
+#   addr: [0x4b5e]
+#   handler: surgeon.generic_common_abort
+# - name: __sseek
+#   addr: [0x4b96]
+#   handler: surgeon.generic_common_abort
+# - name: __sclose
+#   addr: [0x4bba]
+#   handler: surgeon.generic_common_abort
+# - name: strcmp
+#   addr: [0x4bc2]
+#   handler: surgeon.generic_common_abort
+# - name: strncmp
+#   addr: [0x4bd6]
+#   handler: surgeon.generic_common_abort
+# - name: _strtol_l.isra.0
+#   addr: [0x4bfa]
+#   handler: surgeon.generic_common_abort
+# - name: _strtol_r
+#   addr: [0x4cfc]
+#   handler: surgeon.generic_common_abort
+# - name: strtol
+#   addr: [0x4d20]
+#   handler: surgeon.generic_common_abort
+# - name: __tzcalc_limits
+#   addr: [0x4d4c]
+#   handler: surgeon.generic_common_abort
+# - name: __tz_lock
+#   addr: [0x4e9c]
+#   handler: surgeon.generic_common_abort
+# - name: __tz_unlock
+#   addr: [0x4e9e]
+#   handler: surgeon.generic_common_abort
+# - name: _tzset_unlocked
+#   addr: [0x4ea0]
+#   handler: surgeon.generic_common_abort
+# - name: _tzset_unlocked_r
+#   addr: [0x4eac]
+#   handler: surgeon.generic_common_abort
+# - name: __swbuf_r
+#   addr: [0x51b0]
+#   handler: surgeon.generic_common_abort
+# - name: __swsetup_r
+#   addr: [0x5254]
+#   handler: surgeon.generic_common_abort
+# - name: div
+#   addr: [0x5330]
+#   handler: surgeon.generic_common_abort
+# - name: _findenv_r
+#   addr: [0x5358]
+#   handler: surgeon.generic_common_abort
+# - name: _getenv_r
+#   addr: [0x53d8]
+#   handler: surgeon.generic_common_abort
+# - name: __gettzinfo
+#   addr: [0x53e8]
+#   handler: surgeon.generic_common_abort
+# - name: __locale_ctype_ptr_l
+#   addr: [0x53f0]
+#   handler: surgeon.generic_common_abort
+# - name: __locale_ctype_ptr
+#   addr: [0x53f8]
+#   handler: surgeon.generic_common_abort
+# - name: __swhatbuf_r
+#   addr: [0x5414]
+#   handler: surgeon.generic_common_abort
+# - name: __smakebuf_r
+#   addr: [0x545c]
+#   handler: surgeon.generic_common_abort
+# - name: free
+#   addr: [0x54dc]
+#   handler: surgeon.generic_common_abort
+# - name: __ascii_mbtowc
+#   addr: [0x54ec]
+#   handler: surgeon.generic_common_abort
+# - name: __malloc_lock
+#   addr: [0x5510]
+#   handler: surgeon.generic_common_abort
+# - name: __malloc_unlock
+#   addr: [0x5512]
+#   handler: surgeon.generic_common_abort
+# - name: __sfputc_r
+#   addr: [0x5514]
+#   handler: surgeon.generic_common_abort
+# - name: __sfputs_r
+#   addr: [0x5540]
+#   handler: surgeon.generic_common_abort
+# - name: _vfprintf_r
+#   addr: [0x5564]
+#   handler: surgeon.generic_common_abort
+# - name: _printf_common
+#   addr: [0x5790]
+#   handler: surgeon.generic_common_abort
+# - name: _printf_i
+#   addr: [0x587c]
+#   handler: surgeon.generic_common_abort
+# - name: lflush
+#   addr: [0x5abc]
+#   handler: surgeon.generic_common_abort
+# - name: __srefill_r
+#   addr: [0x5ad0]
+#   handler: surgeon.generic_common_abort
+# - name: sscanf
+#   addr: [0x5be4]
+#   handler: surgeon.generic_common_abort
+# - name: strcpy
+#   addr: [0x5c38]
+#   handler: surgeon.generic_common_abort
+# - name: strlen
+#   addr: [0x5c48]
+#   handler: surgeon.generic_common_abort
+# - name: _strtoul_l.isra.0
+#   addr: [0x5c58]
+#   handler: surgeon.generic_common_abort
+# - name: _strtoul_r
+#   addr: [0x5d54]
+#   handler: surgeon.generic_common_abort
+# - name: strtoul
+#   addr: [0x5d78]
+#   handler: surgeon.generic_common_abort
+# - name: __ascii_wctomb
+#   addr: [0x5da4]
+#   handler: surgeon.generic_common_abort
+# - name: __env_lock
+#   addr: [0x5dbe]
+#   handler: surgeon.generic_common_abort
+# - name: __env_unlock
+#   addr: [0x5dc0]
+#   handler: surgeon.generic_common_abort
+# - name: memchr
+#   addr: [0x5dd0]
+#   handler: surgeon.generic_common_abort
+# - name: memcpy
+#   addr: [0x5e70]
+#   handler: surgeon.generic_common_abort
+# - name: _realloc_r
+#   addr: [0x5e86]
+#   handler: surgeon.generic_common_abort
+# - name: _sungetc_r
+#   addr: [0x5ed2]
+#   handler: surgeon.generic_common_abort
+# - name: __ssrefill_r
+#   addr: [0x5f4c]
+#   handler: surgeon.generic_common_abort
+# - name: __ssvfscanf_r
+#   addr: [0x5f88]
+#   handler: surgeon.generic_common_abort
+# - name: _scanf_chars
+#   addr: [0x6230]
+#   handler: surgeon.generic_common_abort
+# - name: _scanf_i
+#   addr: [0x62f8]
+#   handler: surgeon.generic_common_abort
+# - name: __sccl
+#   addr: [0x64e0]
+#   handler: surgeon.generic_common_abort
+# - name: __submore
+#   addr: [0x6540]
+#   handler: surgeon.generic_common_abort
+# - name: _malloc_usable_size_r
+#   addr: [0x65b6]
+#   handler: surgeon.generic_common_abort
+# - name: aNmiHandler
+#   addr: [0x65c8]
+#   handler: surgeon.generic_common_abort
+# - name: aIsrStackOverfl
+#   addr: [0x65d4]
+#   handler: surgeon.generic_common_abort
+# - name: aResetToTopOfSt
+#   addr: [0x6604]
+#   handler: surgeon.generic_common_abort
+# - name: aContextBeforeH
+#   addr: [0x661c]
+#   handler: surgeon.generic_common_abort
+# - name: aR00x08lxR10x08
+#   addr: [0x6638]
+#   handler: surgeon.generic_common_abort
+# - name: aR120x08lxLr0x0
+#   addr: [0x6678]
+#   handler: surgeon.generic_common_abort
+# - name: aFsrFar
+#   addr: [0x66b8]
+#   handler: surgeon.generic_common_abort
+# - name: aCfsr0x08lx
+#   addr: [0x66c4]
+#   handler: surgeon.generic_common_abort
+# - name: aHfsr0x08lx
+#   addr: [0x66d4]
+#   handler: surgeon.generic_common_abort
+# - name: aDfsr0x08lx
+#   addr: [0x66e4]
+#   handler: surgeon.generic_common_abort
+# - name: aAfsr0x08lx
+#   addr: [0x66f4]
+#   handler: surgeon.generic_common_abort
+# - name: aR0x08lx
+#   addr: [0x6708]
+#   handler: surgeon.generic_common_abort
+# - name: aMmfar0x08lx
+#   addr: [0x6714]
+#   handler: surgeon.generic_common_abort
+# - name: aMisc
+#   addr: [0x6724]
+#   handler: surgeon.generic_common_abort
+# - name: aExcRet0x08lx
+#   addr: [0x672c]
+#   handler: surgeon.generic_common_abort
+# - name: aAteForDebuggin
+#   addr: [0x675c]
+#   handler: surgeon.generic_common_abort
+# - name: aDbSetPc0xLxFra
+#   addr: [0x6778]
+#   handler: surgeon.generic_common_abort
+# - name: aHardFaultHandl
+#   addr: [0x67cc]
+#   handler: surgeon.generic_common_abort
+# - name: aMemManageHandl
+#   addr: [0x67e0]
+#   handler: surgeon.generic_common_abort
+# - name: aBusFaultHandle
+#   addr: [0x67f4]
+#   handler: surgeon.generic_common_abort
+# - name: aUsageFaultHand
+#   addr: [0x6808]
+#   handler: surgeon.generic_common_abort
+# - name: aDebugMonHandle
+#   addr: [0x681c]
+#   handler: surgeon.generic_common_abort
+# - name: aDummyHandler
+#   addr: [0x6830]
+#   handler: surgeon.generic_common_abort
+# - name: BFARVALID_MASK.6858
+#   addr: [0x6840]
+#   handler: surgeon.generic_common_abort
+# - name: MMARVALID_MASK.6859
+#   addr: [0x6844]
+#   handler: surgeon.generic_common_abort
+# - name: aRiotKernelPani
+#   addr: [0x684c]
+#   handler: surgeon.generic_common_abort
+# - name: aHalted
+#   addr: [0x686c]
+#   handler: surgeon.generic_common_abort
+# - name: assert_crash_message
+#   addr: [0x687c]
+#   handler: surgeon.generic_common_abort
+# - name: aMainThisIsRiot
+#   addr: [0x6890]
+#   handler: surgeon.generic_common_abort
+# - name: aMain
+#   addr: [0x68cc]
+#   handler: surgeon.generic_common_abort
+# - name: aIdle
+#   addr: [0x68d4]
+#   handler: surgeon.generic_common_abort
+# - name: uart_config
+#   addr: [0x68dc]
+#   handler: surgeon.generic_common_abort
+# - name: mcg_mode_routing
+#   addr: [0x68fc]
+#   handler: surgeon.generic_common_abort
+# - name: aStopped
+#   addr: [0x693c]
+#   handler: surgeon.generic_common_abort
+# - name: aSleeping
+#   addr: [0x6944]
+#   handler: surgeon.generic_common_abort
+# - name: aBlMutex
+#   addr: [0x6950]
+#   handler: surgeon.generic_common_abort
+# - name: aBlRx
+#   addr: [0x695c]
+#   handler: surgeon.generic_common_abort
+# - name: aBlSend
+#   addr: [0x6964]
+#   handler: surgeon.generic_common_abort
+# - name: aBlReply
+#   addr: [0x696c]
+#   handler: surgeon.generic_common_abort
+# - name: aBlAnyfl
+#   addr: [0x6978]
+#   handler: surgeon.generic_common_abort
+# - name: aBlAllfl
+#   addr: [0x6984]
+#   handler: surgeon.generic_common_abort
+# - name: aBlMbox
+#   addr: [0x6990]
+#   handler: surgeon.generic_common_abort
+# - name: aRunning
+#   addr: [0x6998]
+#   handler: surgeon.generic_common_abort
+# - name: aPending
+#   addr: [0x69a0]
+#   handler: surgeon.generic_common_abort
+# - name: aState
+#   addr: [0x69a8]
+#   handler: surgeon.generic_common_abort
+# - name: aName
+#   addr: [0x69b0]
+#   handler: surgeon.generic_common_abort
+# - name: aPid21s9sqPriSt
+#   addr: [0x69b8]
+#   handler: surgeon.generic_common_abort
+# - name: aIsrStack6i5i10
+#   addr: [0x6a00]
+#   handler: surgeon.generic_common_abort
+# - name: a3hi20s8s1s3i6i
+#   addr: [0x6a4c]
+#   handler: surgeon.generic_common_abort
+# - name: aSum
+#   addr: [0x6a8c]
+#   handler: surgeon.generic_common_abort
+# - name: a5s21s13s6s6i5i
+#   addr: [0x6a90]
+#   handler: surgeon.generic_common_abort
+# - name: aWelcomeToRiot
+#   addr: [0x6ab4]
+#   handler: surgeon.generic_common_abort
+# - name: aDescription
+#   addr: [0x6ac8]
+#   handler: surgeon.generic_common_abort
+# - name: aCommand
+#   addr: [0x6ad4]
+#   handler: surgeon.generic_common_abort
+# - name: a20sS
+#   addr: [0x6adc]
+#   handler: surgeon.generic_common_abort
+# - name: aHelp
+#   addr: [0x6b10]
+#   handler: surgeon.generic_common_abort
+# - name: aShellCommandNo
+#   addr: [0x6b18]
+#   handler: surgeon.generic_common_abort
+# - name: aShellIncorrect
+#   addr: [0x6b38]
+#   handler: surgeon.generic_common_abort
+# - name: aReboot
+#   addr: [0x6b54]
+#   handler: surgeon.generic_common_abort
+# - name: aRebootTheNode
+#   addr: [0x6b5c]
+#   handler: surgeon.generic_common_abort
+# - name: aPs
+#   addr: [0x6b6c]
+#   handler: surgeon.generic_common_abort
+# - name: aPrintsInformat
+#   addr: [0x6b70]
+#   handler: surgeon.generic_common_abort
+# - name: aRtc
+#   addr: [0x6b9c]
+#   handler: surgeon.generic_common_abort
+# - name: aControlRtcPeri
+#   addr: [0x6ba0]
+#   handler: surgeon.generic_common_abort
+# - name: aSaul
+#   addr: [0x6bc4]
+#   handler: surgeon.generic_common_abort
+# - name: aInteractWithSe
+#   addr: [0x6bcc]
+#   handler: surgeon.generic_common_abort
+# - name: _shell_command_list
+#   addr: [0x6bfc]
+#   handler: surgeon.generic_common_abort
+# - name: aErrorFailedToR
+#   addr: [0x6c38]
+#   handler: surgeon.generic_common_abort
+# - name: aReadingFromISS
+#   addr: [0x6c60]
+#   handler: surgeon.generic_common_abort
+# - name: aIdClassName
+#   addr: [0x6c80]
+#   handler: surgeon.generic_common_abort
+# - name: aNoDevicesFound
+#   addr: [0x6c90]
+#   handler: surgeon.generic_common_abort
+# - name: aISS
+#   addr: [0x6ca4]
+#   handler: surgeon.generic_common_abort
+# - name: aUsageSSDeviceI
+#   addr: [0x6cb0]
+#   handler: surgeon.generic_common_abort
+# - name: aAll
+#   addr: [0x6cd0]
+#   handler: surgeon.generic_common_abort
+# - name: aErrorUndefined
+#   addr: [0x6cd4]
+#   handler: surgeon.generic_common_abort
+# - name: aUsageSSDeviceI_0
+#   addr: [0x6cf8]
+#   handler: surgeon.generic_common_abort
+# - name: aErrorUndefined_0
+#   addr: [0x6d34]
+#   handler: surgeon.generic_common_abort
+# - name: aWritingToDevic
+#   addr: [0x6d54]
+#   handler: surgeon.generic_common_abort
+# - name: aErrorDeviceIIs
+#   addr: [0x6d70]
+#   handler: surgeon.generic_common_abort
+# - name: aErrorFailureTo
+#   addr: [0x6d94]
+#   handler: surgeon.generic_common_abort
+# - name: aDataSuccessful
+#   addr: [0x6dbc]
+#   handler: surgeon.generic_common_abort
+# - name: aRead
+#   addr: [0x6de8]
+#   handler: surgeon.generic_common_abort
+# - name: aWrite
+#   addr: [0x6df0]
+#   handler: surgeon.generic_common_abort
+# - name: aUsageSReadWrit
+#   addr: [0x6df8]
+#   handler: surgeon.generic_common_abort
+# - name: aTheAlarmRang
+#   addr: [0x6e10]
+#   handler: surgeon.generic_common_abort
+# - name: a04i02i02i02i02
+#   addr: [0x6e20]
+#   handler: surgeon.generic_common_abort
+# - name: aRtcErrorGettin
+#   addr: [0x6e40]
+#   handler: surgeon.generic_common_abort
+# - name: aRtcErrorSettin
+#   addr: [0x6e5c]
+#   handler: surgeon.generic_common_abort
+# - name: aRtcErrorGettin_0
+#   addr: [0x6e78]
+#   handler: surgeon.generic_common_abort
+# - name: aRtcErrorSettin_0
+#   addr: [0x6e90]
+#   handler: surgeon.generic_common_abort
+# - name: aUsageRtcComman
+#   addr: [0x6ea8]
+#   handler: surgeon.generic_common_abort
+# - name: aCommands
+#   addr: [0x6ecc]
+#   handler: surgeon.generic_common_abort
+# - name: aPoweronPowerTh
+#   addr: [0x6ed8]
+#   handler: surgeon.generic_common_abort
+# - name: aPoweroffPowerT
+#   addr: [0x6efc]
+#   handler: surgeon.generic_common_abort
+# - name: aClearalarmDeac
+#   addr: [0x6f20]
+#   handler: surgeon.generic_common_abort
+# - name: aGetalarmPrintT
+#   addr: [0x6f4c]
+#   handler: surgeon.generic_common_abort
+# - name: aSetalarmYyyyMm
+#   addr: [0x6f78]
+#   handler: surgeon.generic_common_abort
+# - name: aGettimePrintTh
+#   addr: [0x6fc0]
+#   handler: surgeon.generic_common_abort
+# - name: aSettimeYyyyMmD
+#   addr: [0x6fe4]
+#   handler: surgeon.generic_common_abort
+# - name: aPoweron
+#   addr: [0x701c]
+#   handler: surgeon.generic_common_abort
+# - name: aPoweroff
+#   addr: [0x7024]
+#   handler: surgeon.generic_common_abort
+# - name: aClearalarm
+#   addr: [0x7030]
+#   handler: surgeon.generic_common_abort
+# - name: aGetalarm
+#   addr: [0x703c]
+#   handler: surgeon.generic_common_abort
+# - name: aSetalarm
+#   addr: [0x7048]
+#   handler: surgeon.generic_common_abort
+# - name: aGettime
+#   addr: [0x7054]
+#   handler: surgeon.generic_common_abort
+# - name: aSettime
+#   addr: [0x705c]
+#   handler: surgeon.generic_common_abort
+# - name: aUnknownCommand
+#   addr: [0x7064]
+#   handler: surgeon.generic_common_abort
+# - name: aUnableToDispla
+#   addr: [0x7090]
+#   handler: surgeon.generic_common_abort
+# - name: aData
+#   addr: [0x70b0]
+#   handler: surgeon.generic_common_abort
+# - name: aU
+#   addr: [0x70bc]
+#   handler: surgeon.generic_common_abort
+# - name: a6dC
+#   addr: [0x70cc]
+#   handler: surgeon.generic_common_abort
+# - name: a6d
+#   addr: [0x70d4]
+#   handler: surgeon.generic_common_abort
+# - name: aS
+#   addr: [0x70d8]
+#   handler: surgeon.generic_common_abort
+# - name: aIeI
+#   addr: [0x70dc]
+#   handler: surgeon.generic_common_abort
+# - name: aS_0
+#   addr: [0x70e4]
+#   handler: surgeon.generic_common_abort
+# - name: aClassUndef
+#   addr: [0x7134]
+#   handler: surgeon.generic_common_abort
+# - name: aActAny
+#   addr: [0x7140]
+#   handler: surgeon.generic_common_abort
+# - name: aActLedRgb
+#   addr: [0x7148]
+#   handler: surgeon.generic_common_abort
+# - name: aActServo
+#   addr: [0x7154]
+#   handler: surgeon.generic_common_abort
+# - name: aActMotor
+#   addr: [0x7160]
+#   handler: surgeon.generic_common_abort
+# - name: aActSwitch
+#   addr: [0x716c]
+#   handler: surgeon.generic_common_abort
+# - name: aActDimmer
+#   addr: [0x7178]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseAny
+#   addr: [0x7184]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseBtn
+#   addr: [0x7190]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseTemp
+#   addr: [0x719c]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseHum
+#   addr: [0x71a8]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseLight
+#   addr: [0x71b4]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseAccel
+#   addr: [0x71c0]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseMag
+#   addr: [0x71cc]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseGyro
+#   addr: [0x71d8]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseColor
+#   addr: [0x71e4]
+#   handler: surgeon.generic_common_abort
+# - name: aSensePress
+#   addr: [0x71f0]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseAnalog
+#   addr: [0x71fc]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseUv
+#   addr: [0x720c]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseObjtemp
+#   addr: [0x7218]
+#   handler: surgeon.generic_common_abort
+# - name: aSensePulseCoun
+#   addr: [0x7228]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseDistance
+#   addr: [0x723c]
+#   handler: surgeon.generic_common_abort
+# - name: aSenseCo2
+#   addr: [0x724c]
+#   handler: surgeon.generic_common_abort
+# - name: aClassAny
+#   addr: [0x7258]
+#   handler: surgeon.generic_common_abort
+# - name: aClassUnknown
+#   addr: [0x7264]
+#   handler: surgeon.generic_common_abort
+# - name: _tenmap
+#   addr: [0x7274]
+#   handler: surgeon.generic_common_abort
+# - name: __sf_fake_stderr
+#   addr: [0x7294]
+#   handler: surgeon.generic_common_abort
+# - name: __sf_fake_stdin
+#   addr: [0x72b4]
+#   handler: surgeon.generic_common_abort
+# - name: __sf_fake_stdout
+#   addr: [0x72d4]
+#   handler: surgeon.generic_common_abort
+# - name: _global_impure_ptr
+#   addr: [0x72f4]
+#   handler: surgeon.generic_common_abort
+# - name: DAYS_IN_MONTH
+#   addr: [0x72f8]
+#   handler: surgeon.generic_common_abort
+# - name: _DAYS_BEFORE_MONTH
+#   addr: [0x7328]
+#   handler: surgeon.generic_common_abort
+# - name: a1009N
+#   addr: [0x7360]
+#   handler: surgeon.generic_common_abort
+# - name: aMHuNHuNHuN
+#   addr: [0x736e]
+#   handler: surgeon.generic_common_abort
+# - name: aHuNHuNHuN
+#   addr: [0x7381]
+#   handler: surgeon.generic_common_abort
+# - name: aC
+#   addr: [0x7394]
+#   handler: surgeon.generic_common_abort
+# - name: aPosix
+#   addr: [0x7396]
+#   handler: surgeon.generic_common_abort
+# - name: __month_lengths
+#   addr: [0x73a0]
+#   handler: surgeon.generic_common_abort
+# - name: a0
+#   addr: [0x7400]
+#   handler: surgeon.generic_common_abort
+# - name: a123456789abcde
+#   addr: [0x7412]
+#   handler: surgeon.generic_common_abort
+# - name: a123456789abcde_0
+#   addr: [0x7423]
+#   handler: surgeon.generic_common_abort
+# - name: _ctype_
+#   addr: [0x7433]
+#   handler: surgeon.generic_common_abort
+# - name: isr_stack
+#   addr: [0x1fff0000]
+#   handler: surgeon.generic_common_abort
+# - name: heap_top
+#   addr: [0x1fff0200]
+#   handler: surgeon.generic_common_abort
+# - name: uart_stdio_isrpipe
+#   addr: [0x1fff0204]
+#   handler: surgeon.generic_common_abort
+# - name: main_name
+#   addr: [0x1fff0218]
+#   handler: surgeon.generic_common_abort
+# - name: idle_name
+#   addr: [0x1fff021c]
+#   handler: surgeon.generic_common_abort
+# - name: state_names
+#   addr: [0x1fff0220]
+#   handler: surgeon.generic_common_abort
+# - name: INCORRECT_QUOTING.4813
+#   addr: [0x1fff024c]
+#   handler: surgeon.generic_common_abort
+# - name: t.7177
+#   addr: [0x1fff0250]
+#   handler: surgeon.generic_common_abort
+# - name: _impure_ptr
+#   addr: [0x1fff0280]
+#   handler: surgeon.generic_common_abort
+# - name: impure_data
+#   addr: [0x1fff0284]
+#   handler: surgeon.generic_common_abort
+# - name: _tzname
+#   addr: [0x1fff02e4]
+#   handler: surgeon.generic_common_abort
+# - name: tzinfo
+#   addr: [0x1fff02ec]
+#   handler: surgeon.generic_common_abort
+# - name: __global_locale
+#   addr: [0x1fff032c]
+#   handler: surgeon.generic_common_abort
+# - name: environ
+#   addr: [0x1fff0498]
+#   handler: surgeon.generic_common_abort
+# - name: max_threads
+#   addr: [0x1fff049c]
+#   handler: surgeon.generic_common_abort
+# - name: _tcb_name_offset
+#   addr: [0x1fff049d]
+#   handler: surgeon.generic_common_abort
+# - name: _szero
+#   addr: [0x1fff04a0]
+#   handler: surgeon.generic_common_abort
+# - name: sched_context_switch_request
+#   addr: [0x1fff04a4]
+#   handler: surgeon.generic_common_abort
+# - name: sched_threads
+#   addr: [0x1fff04a8]
+#   handler: surgeon.generic_common_abort
+# - name: sched_active_thread
+#   addr: [0x1fff052c]
+#   handler: surgeon.generic_common_abort
+# - name: sched_active_pid
+#   addr: [0x1fff0530]
+#   handler: surgeon.generic_common_abort
+# - name: sched_runqueues
+#   addr: [0x1fff0534]
+#   handler: surgeon.generic_common_abort
+# - name: runqueue_bitcache
+#   addr: [0x1fff0574]
+#   handler: surgeon.generic_common_abort
+# - name: _rx_buf_mem
+#   addr: [0x1fff0578]
+#   handler: surgeon.generic_common_abort
+# - name: crashed
+#   addr: [0x1fff05b8]
+#   handler: surgeon.generic_common_abort
+# - name: main_stack
+#   addr: [0x1fff05bc]
+#   handler: surgeon.generic_common_abort
+# - name: idle_stack
+#   addr: [0x1fff0bbc]
+#   handler: surgeon.generic_common_abort
+# - name: config
+#   addr: [0x1fff0cbc]
+#   handler: surgeon.generic_common_abort
+# - name: current_mode
+#   addr: [0x1fff0cc4]
+#   handler: surgeon.generic_common_abort
+# - name: isr_ctx
+#   addr: [0x1fff0cc8]
+#   handler: surgeon.generic_common_abort
+# - name: isr_map
+#   addr: [0x1fff0d28]
+#   handler: surgeon.generic_common_abort
+# - name: rtc_callback
+#   addr: [0x1fff0ee8]
+#   handler: surgeon.generic_common_abort
+# - name: rtt_callback
+#   addr: [0x1fff0eec]
+#   handler: surgeon.generic_common_abort
+# - name: saul_reg_0
+#   addr: [0x1fff0efc]
+#   handler: surgeon.generic_common_abort
+# - name: __malloc_free_list
+#   addr: [0x1fff0f00]
+#   handler: surgeon.generic_common_abort
+# - name: __malloc_sbrk_start
+#   addr: [0x1fff0f04]
+#   handler: surgeon.generic_common_abort
+# - name: __tzname_dst
+#   addr: [0x1fff0f08]
+#   handler: surgeon.generic_common_abort
+# - name: __tzname_std
+#   addr: [0x1fff0f13]
+#   handler: surgeon.generic_common_abort
+# - name: prev_tzenv
+#   addr: [0x1fff0f20]
+#   handler: surgeon.generic_common_abort
+# - name: _daylight
+#   addr: [0x1fff0f24]
+#   handler: surgeon.generic_common_abort
+# - name: _timezone
+#   addr: [0x1fff0f28]
+#   handler: surgeon.generic_common_abort
+# - name: initial_env
+#   addr: [0x1fff0f2c]
+#   handler: surgeon.generic_common_abort
+# - name: _end
+#   addr: [0x1fff0f30]
+#   handler: surgeon.generic_common_abort
+# - name: _rom_start_addr
+#   addr: [0x1fff0f34]
+#   handler: surgeon.generic_common_abort
+# - name: _ram_length
+#   addr: [0x1fff0f38]
+#   handler: surgeon.generic_common_abort
+# - name: _ram_start_addr
+#   addr: [0x1fff0f3c]
+#   handler: surgeon.generic_common_abort
+# - name: _flashsec_length
+#   addr: [0x1fff0f40]
+#   handler: surgeon.generic_common_abort
+# - name: _ram_base_addr
+#   addr: [0x1fff0f44]
+#   handler: surgeon.generic_common_abort
+# - name: _rom_length
+#   addr: [0x1fff0f48]
+#   handler: surgeon.generic_common_abort
+# - name: _vectors_length
+#   addr: [0x1fff0f4c]
+#   handler: surgeon.generic_common_abort

@@ -1,0 +1,13 @@
+# Addresses for functions to be rewritten (=> to be branched to the dispatcher)
+- name: sys_close
+  addr: [0x178]
+# handler: halucinator.bp_handlers.example.Example.wrap
+  handler: surgeon.example_fortytwo
+- name: sys_write
+  addr: [0x18c]
+# handler: halucinator.bp_handlers.example.Example.hello_world
+  handler: surgeon.example_hello_world
+- name: sys_exit
+  addr: [0x1a8]
+# handler: halucinator.bp_handlers.example.Example.kill
+  handler: surgeon.example_kill

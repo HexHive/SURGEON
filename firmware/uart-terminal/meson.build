@@ -1,0 +1,1 @@
+exe = files('uart-terminal')

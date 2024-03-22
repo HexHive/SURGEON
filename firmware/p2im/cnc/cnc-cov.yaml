@@ -1,0 +1,2 @@
+trampoline_base_addr: 0x07fa0000
+bbs_file: cnc-cov-bbs.yaml

@@ -1,0 +1,2 @@
+-i https://pypi.org/simple
+pyyaml==6.0

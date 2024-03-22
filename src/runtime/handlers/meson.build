@@ -1,0 +1,6 @@
+subdir('example')
+subdir('generic')
+subdir('grbl')
+subdir('sam')
+subdir('stm32')
+subdir('riot')

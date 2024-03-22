@@ -1,0 +1,2 @@
+trampoline_base_addr: 0x07100000
+bbs_file: uart-terminal-cov-bbs.yaml

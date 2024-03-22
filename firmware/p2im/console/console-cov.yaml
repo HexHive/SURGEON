@@ -1,0 +1,2 @@
+trampoline_base_addr: 0xa000
+bbs_file: console-cov-bbs.yaml

@@ -1,0 +1,2 @@
+trampoline_base_addr: 0x8008000
+bbs_file: reflow-oven-cov-bbs.yaml

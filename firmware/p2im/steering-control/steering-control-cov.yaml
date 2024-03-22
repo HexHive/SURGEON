@@ -1,0 +1,2 @@
+trampoline_base_addr: 0x00086000
+bbs_file: steering-control-cov-bbs.yaml

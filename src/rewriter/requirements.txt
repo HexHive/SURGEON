@@ -1,0 +1,8 @@
+-i https://pypi.org/simple
+keystone-engine==0.9.2
+pyelftools==0.29
+pyyaml==6.0
+capstone==4.0.2
+makeelf==0.3.4
+ipdb==0.13.9
+ipython==8.7.0

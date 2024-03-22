@@ -1,0 +1,5 @@
+# Ignore everything by default...
+*
+# ...apart from intentionally included files
+!docker/*-entrypoint.sh
+!src/*/requirements.txt

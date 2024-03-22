@@ -1,0 +1,2 @@
+trampoline_base_addr: 0x4000
+bbs_file: cov-test-cov-bbs.yaml

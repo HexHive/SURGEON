@@ -1,0 +1,889 @@
+# - name: _sfixed
+#   addr: [0x80000]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __do_global_dtors_aux
+#   addr: [0x800f4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: frame_dummy
+#   addr: [0x80118]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus5beginEl
+#   addr: [0x80148]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus11getRxBufferEv
+#   addr: [0x801ac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus7calcCRCEh
+#   addr: [0x80218]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus12sendTxBufferEv
+#   addr: [0x80254]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus5queryE8modbus_t
+#   addr: [0x802d6]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: jpt_8031A
+#   addr: [0x8031e]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: def_8031A
+#   addr: [0x803b0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus14validateAnswerEv
+#   addr: [0x803d0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus7get_FC3Ev
+#   addr: [0x8040c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6Modbus4pollEv
+#   addr: [0x8043a]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: setup
+#   addr: [0x804a4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: loop
+#   addr: [0x805c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: jpt_805DC
+#   addr: [0x805e0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: def_805DC
+#   addr: [0x8071a]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _GLOBAL__sub_I__ZN6ModbusC2Ev
+#   addr: [0x80a78]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: cstr
+#   addr: [0x80aa8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z11serialEventv
+#   addr: [0x80ab8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: UART_Handler
+#   addr: [0x80abc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z12serialEvent1v
+#   addr: [0x80ac8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z12serialEvent2v
+#   addr: [0x80aca]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z12serialEvent3v
+#   addr: [0x80acc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: USART0_Handler
+#   addr: [0x80ad0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: USART1_Handler
+#   addr: [0x80adc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: USART3_Handler
+#   addr: [0x80ae8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: init
+#   addr: [0x80af4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _GLOBAL__sub_I_g_APinDescription
+#   addr: [0x80c1c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: pUart
+#   addr: [0x80cb8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: pUsart
+#   addr: [0x80cd0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z14serialEventRunv
+#   addr: [0x80cf0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: PIO_PullUp
+  addr: [0x80d34]
+  handler: surgeon.sam_pio_pullup
+# - name: PIO_SetPeripheral
+#   addr: [0x80d3e]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: jpt_80D44
+#   addr: [0x80d48]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: def_80D44
+#   addr: [0x80d60]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: PIO_SetInput
+  addr: [0x80d64]
+  handler: surgeon.sam_pio_setinput
+- name: PIO_SetOutput
+  addr: [0x80d8a]
+  handler: surgeon.sam_pio_setoutput
+# - name: PIO_Configure
+#   addr: [0x80db0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: jpt_80DC0
+#   addr: [0x80dc4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: def_80DC0
+#   addr: [0x80e00]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: PIO_GetOutputDataStatus
+  addr: [0x80e14]
+  handler: surgeon.sam_pio_getoutputdatastatus
+# - name: pmc_enable_periph_clk
+#   addr: [0x80e28]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: pmc_disable_periph_clk
+#   addr: [0x80e6c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+
+# This is technically not the SysTick configuration function but a suitable place to add it
+- name: SystemInit
+  addr: [0x80eac]
+  handler: surgeon.stm32_timers_systick_config
+
+# - name: Reset_Handler
+#   addr: [0x80f34]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: LoopCopyDataInit.ldr
+  addr: [0x80f50]
+  handler: native.nop
+- name: LoopCopyDataInit.str
+  addr: [0x80f52]
+  handler: native.nop
+# - name: adc_init
+#   addr: [0x80fac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: adc_configure_trigger
+#   addr: [0x81044]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: adc_configure_timing
+#   addr: [0x81052]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: adc_disable_channel
+#   addr: [0x8106c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: adc_disable_all_channel
+#   addr: [0x81076]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: adc_disable_interrupt
+#   addr: [0x8107e]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: UOTGHS_Handler
+#   addr: [0x81084]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: PIOA_Handler
+#   addr: [0x81094]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: PIOB_Handler
+#   addr: [0x810cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: PIOC_Handler
+#   addr: [0x81104]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: PIOD_Handler
+#   addr: [0x8113c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: __halt
+  addr: [0x81174]
+  handler: native.detour
+  native_args: ["_exit"]
+# - name: SVC_Handler
+#   addr: [0x81176]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: PendSV_Handler
+#   addr: [0x8117a]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: SysTick_Handler
+#   addr: [0x8117e]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __false
+#   addr: [0x81194]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __halt_0
+#   addr: [0x81198]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _sbrk
+#   addr: [0x8119c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: link
+#   addr: [0x811b8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _close
+#   addr: [0x811be]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fstat
+#   addr: [0x811c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _isatty
+#   addr: [0x811ce]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _lseek
+#   addr: [0x811d2]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _read
+#   addr: [0x811d6]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _write
+#   addr: [0x811dc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: _exit
+  addr: [0x81200]
+  handler: surgeon.generic_common_exit
+# - name: _kill
+#   addr: [0x81210]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _getpid
+#   addr: [0x81212]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: millis
+#   addr: [0x81218]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: delay
+#   addr: [0x81230]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: analogOutputInit
+#   addr: [0x81232]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: pinMode
+  addr: [0x81234]
+  handler: native.skip
+#- name: digitalWrite
+#  addr: [0x8133c]
+#  handler: halucinator.bp_handlers.arduino.arduino_gpio.ArduinoGPIO.digital_write
+# - name: tickReset
+#   addr: [0x813ac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN10RingBufferC2Ev
+#   addr: [0x813cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN10RingBuffer10store_charEh
+#   addr: [0x813e6]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN9UARTClasscvbEv
+#   addr: [0x81404]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: _ZN9UARTClass9availableEv
+  addr: [0x81408]
+  handler: surgeon.sam_uart_available
+# - name: _ZN9UARTClass4peekEv
+#   addr: [0x8141a]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: _ZN9UARTClass4readEv
+  addr: [0x81436]
+  handler: surgeon.sam_uart_read
+# - name: _ZN9UARTClass5flushEv
+#   addr: [0x81460]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: _ZN9UARTClass5writeEh
+  addr: [0x81478]
+  handler: surgeon.sam_uart_write
+# - name: _ZN9UARTClass3endEv
+#   addr: [0x814cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN9UARTClassC2EP4Uart4IRQnmP10RingBufferS4_
+#   addr: [0x81508]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN9UARTClass4initEmm
+#   addr: [0x8152c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN9UARTClass5beginEm
+#   addr: [0x8159c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN9UARTClass10IrqHandlerEv
+#   addr: [0x815a4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN10USARTClass5beginEm
+#   addr: [0x815ee]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN10USARTClassC2EP5Usart4IRQnmP10RingBufferS4_
+#   addr: [0x815f8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _Z8makeWordhh
+#   addr: [0x8161c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6StringD2Ev
+#   addr: [0x81622]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6String10invalidateEv
+#   addr: [0x81630]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6String12changeBufferEj
+#   addr: [0x81646]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6String7reserveEj
+#   addr: [0x8165e]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6String4copyEPKcj
+#   addr: [0x81680]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN6StringC2EPKc
+#   addr: [0x816a6]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: initVariant
+#   addr: [0x816ca]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: main
+#   addr: [0x816cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _watchdogDefaultSetup
+#   addr: [0x816f8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZN5Print5writeEPKhj
+#   addr: [0x81704]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: TimeTick_Increment
+#   addr: [0x81728]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+- name: WDT_Disable
+  addr: [0x81738]
+  handler: native.skip
+# - name: __aeabi_frsub
+#   addr: [0x81740]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __subsf3
+#   addr: [0x81748]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fadd
+#   addr: [0x8174c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __floatunsisf
+#   addr: [0x818ac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __floatsisf
+#   addr: [0x818b4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __floatundisf
+#   addr: [0x818d0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __floatdisf
+#   addr: [0x818e0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __mulsf3
+#   addr: [0x8195c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __divsf3
+#   addr: [0x81ac4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __gtsf2
+#   addr: [0x81bfc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __ltsf2
+#   addr: [0x81c04]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __nesf2
+#   addr: [0x81c0c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_cfrcmple
+#   addr: [0x81c6c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_cfcmple
+#   addr: [0x81c74]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fcmpeq
+#   addr: [0x81c84]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fcmplt
+#   addr: [0x81c98]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fcmple
+#   addr: [0x81cac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fcmpge
+#   addr: [0x81cc0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_fcmpgt
+#   addr: [0x81cd4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __fixsfsi
+#   addr: [0x81ce8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __fixunssfsi
+#   addr: [0x81d34]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_atexit
+#   addr: [0x81d74]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __cxa_atexit
+#   addr: [0x81d80]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __libc_init_array
+#   addr: [0x81d94]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: iprintf
+#   addr: [0x81de4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: malloc
+#   addr: [0x81e0c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: free
+#   addr: [0x81e1c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _malloc_r
+#   addr: [0x81e2c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: memcpy
+#   addr: [0x82364]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: memmove
+#   addr: [0x82450]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: memset
+#   addr: [0x8251c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_lock
+#   addr: [0x825b0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_unlock
+#   addr: [0x825b4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: realloc
+#   addr: [0x825b8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _realloc_r
+#   addr: [0x825c8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _sbrk_r
+#   addr: [0x82988]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: strcpy
+#   addr: [0x829ac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: strlen
+#   addr: [0x82a68]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kill
+#   addr: [0x82ac8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sprint_r.part.0
+#   addr: [0x82ad8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _vfiprintf_r
+#   addr: [0x82b50]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: jpt_82C38
+#   addr: [0x82c3c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: def_82C38
+#   addr: [0x831ea]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sbprintf
+#   addr: [0x837a4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __swsetup_r
+#   addr: [0x83820]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __register_exitproc
+#   addr: [0x838e4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: register_fini
+#   addr: [0x8398c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: atexit
+#   addr: [0x839a0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sflush_r
+#   addr: [0x839ac]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fflush_r
+#   addr: [0x83af4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _cleanup_r
+#   addr: [0x83b20]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sinit
+#   addr: [0x83b2c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sfp_lock_acquire
+#   addr: [0x83c20]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sfp_lock_release
+#   addr: [0x83c24]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __libc_fini_array
+#   addr: [0x83c28]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fputwc_r
+#   addr: [0x83c58]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _malloc_trim_r
+#   addr: [0x83d18]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _free_r
+#   addr: [0x83db4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sfvwrite_r
+#   addr: [0x83f4c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fwalk
+#   addr: [0x84260]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __locale_charset
+#   addr: [0x842a8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __locale_mb_cur_max
+#   addr: [0x842b0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __smakebuf_r
+#   addr: [0x842bc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: memchr
+#   addr: [0x8439c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _kill_r
+#   addr: [0x84430]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sread
+#   addr: [0x84458]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __swrite
+#   addr: [0x8447c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sseek
+#   addr: [0x844b4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __sclose
+#   addr: [0x844d4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __swbuf_r
+#   addr: [0x844dc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _wcrtomb_r
+#   addr: [0x84584]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __ascii_wctomb
+#   addr: [0x845d4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _write_r
+#   addr: [0x845f0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _close_r
+#   addr: [0x84618]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fclose_r
+#   addr: [0x8463c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: fclose
+#   addr: [0x846bc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _fstat_r
+#   addr: [0x846cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _isatty_r
+#   addr: [0x846f4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _lseek_r
+#   addr: [0x84718]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _read_r
+#   addr: [0x84740]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_uldivmod
+#   addr: [0x84768]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __gnu_ldivmod_helper
+#   addr: [0x84794]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __gnu_uldivmod_helper
+#   addr: [0x847c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __aeabi_ldiv0
+#   addr: [0x847f4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __divdi3
+#   addr: [0x847f8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __udivdi3
+#   addr: [0x84a98]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZL12fctsupported
+#   addr: [0x84d28]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: g_APinDescription
+#   addr: [0x84d30]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: aExitingWithSta
+#   addr: [0x8579c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZTV9UARTClass
+#   addr: [0x857b8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZTV10USARTClass
+#   addr: [0x857e8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _global_impure_ptr
+#   addr: [0x8581c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: blanks.6717
+#   addr: [0x85820]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: a0123456789abcd
+#   addr: [0x85844]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: aNull
+#   addr: [0x85858]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: zeroes.6718
+#   addr: [0x85860]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _init
+#   addr: [0x85870]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __preinit_array_start
+#   addr: [0x8587c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __frame_dummy_init_array_entry
+#   addr: [0x85880]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __init_array_end
+#   addr: [0x8588c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __fini_array_start
+#   addr: [0x85898]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _efixed
+#   addr: [0x8589c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: banzai
+#   addr: [0x20070000]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __dso_handle
+#   addr: [0x2007002c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: SystemCoreClock
+#   addr: [0x20070030]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _ZL5ticks
+#   addr: [0x20070034]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: impure_data
+#   addr: [0x20070038]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _impure_ptr
+#   addr: [0x20070460]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_av_
+#   addr: [0x20070464]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_trim_threshold
+#   addr: [0x2007086c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_sbrk_base
+#   addr: [0x20070870]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: lc_ctype_charset
+#   addr: [0x20070874]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __mb_cur_max
+#   addr: [0x20070894]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __wctomb
+#   addr: [0x20070898]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _szero
+#   addr: [0x2007089c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: object.7862
+#   addr: [0x200708a0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: sst
+#   addr: [0x200708b8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: reloj
+#   addr: [0x200708bc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: ep1
+#   addr: [0x200708c0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: u32wait
+#   addr: [0x200708c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: au16data
+#   addr: [0x200708c8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: ssres
+#   addr: [0x20070908]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: pid1
+#   addr: [0x2007090c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kip1
+#   addr: [0x20070910]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: terminar_ciclo
+#   addr: [0x20070914]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: YN
+#   addr: [0x20070918]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: estado
+#   addr: [0x2007091c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: minutos
+#   addr: [0x20070920]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: segundos
+#   addr: [0x20070924]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: incre
+#   addr: [0x20070928]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: e1
+#   addr: [0x2007092c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: dutybajo1
+#   addr: [0x20070930]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tiempo_espera
+#   addr: [0x20070934]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: in1
+#   addr: [0x20070938]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tempe_z1
+#   addr: [0x2007093c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tempe_z2
+#   addr: [0x20070940]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: u8state
+#   addr: [0x20070944]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kia1
+#   addr: [0x20070948]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: mmres
+#   addr: [0x2007094c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: RxString
+#   addr: [0x20070950]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: espera_plancha
+#   addr: [0x2007095c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: minutosp
+#   addr: [0x20070960]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: segundosp
+#   addr: [0x20070964]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kdp1
+#   addr: [0x20070968]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: duty1
+#   addr: [0x2007096c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: duty2
+#   addr: [0x20070970]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: mmt
+#   addr: [0x20070974]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: telegram
+#   addr: [0x20070978]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kda1
+#   addr: [0x200709c0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: temperatura1
+#   addr: [0x200709c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: data8024
+#   addr: [0x200709c8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tiempopid1
+#   addr: [0x200709dc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: master
+#   addr: [0x200709e0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: dutyalto1
+#   addr: [0x20070a44]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: kpa1
+#   addr: [0x20070a48]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tx_buffer2
+#   addr: [0x20070a4c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tx_buffer1
+#   addr: [0x20070ad4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: Serial
+#   addr: [0x20070b5c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: rx_buffer1
+#   addr: [0x20070b80]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: Serial1
+#   addr: [0x20070c08]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: Serial2
+#   addr: [0x20070c30]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: Serial3
+#   addr: [0x20070c58]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tx_buffer3
+#   addr: [0x20070c80]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: tx_buffer4
+#   addr: [0x20070d08]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: g_pinStatus
+#   addr: [0x20070d90]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: rx_buffer2
+#   addr: [0x20070de0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: rx_buffer3
+#   addr: [0x20070e68]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: rx_buffer4
+#   addr: [0x20070ef0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: gpf_isr
+#   addr: [0x20070f78]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: callbacksPioA
+#   addr: [0x20070f7c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: callbacksPioB
+#   addr: [0x20070ffc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: callbacksPioC
+#   addr: [0x2007107c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: callbacksPioD
+#   addr: [0x200710fc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: heap.6420
+#   addr: [0x2007117c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _dwTickCount
+#   addr: [0x20071180]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_max_total_mem
+#   addr: [0x20071184]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_max_sbrked_mem
+#   addr: [0x20071188]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_top_pad
+#   addr: [0x2007118c]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __malloc_current_mallinfo
+#   addr: [0x20071190]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: timehack
+#   addr: [0x200711b8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: errno
+#   addr: [0x200711c0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _end
+#   addr: [0x200711c4]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __StackTop
+#   addr: [0x200711c8]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: __StackLimit
+#   addr: [0x200711cc]
+#   handler: halucinator.bp_handlers.generic.Abort.abort
+# - name: _estack
+#   addr: [0x200711d0]
+#   handler: halucinator.bp_handlers.generic.Abort.abort

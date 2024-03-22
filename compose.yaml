@@ -1,0 +1,54 @@
+services:
+  surgeon-runner:
+    image: surgeon:latest
+    platform: linux/arm64
+    build:
+      context: .
+      target: runner
+    environment:
+      WORKDIR: /surgeon
+      PYTHONPYCACHEPREFIX: /pycache
+    volumes:
+      - ./firmware:/surgeon/firmware:ro
+      - ./src:/surgeon/src:ro
+      - ./docker/runner-entrypoint.sh:/runner-entrypoint.sh
+      - ./meson.build:/surgeon/meson.build:ro
+      - ./meson.options:/surgeon/meson.options:ro
+      - ./arm-linux-gnueabihf.ini:/surgeon/arm-linux-gnueabihf.ini:ro
+      - ./arm-linux-musleabi.ini:/surgeon/arm-linux-musleabi.ini:ro
+      - ./out:/surgeon/out:rw
+      - pycache:/pycache
+    working_dir: /surgeon
+    cap_add:
+      - SYS_RAWIO # Required for mmapping address 0
+
+  surgeon-debugger:
+    extends: # Use env, volumes, capabilities from above service
+      service: surgeon-runner
+    image: surgeon:debug
+    platform: linux # Native arch to not cause issues with gdb
+    build:
+      context: .
+      target: debugger
+    volumes:
+      - ./docker/debugger-entrypoint.sh:/debugger-entrypoint.sh
+    ports:
+      - 127.0.0.1:1234:1234
+    deploy:
+      replicas: 0 # Don't start the debugger by default
+
+  ghidrathon-headless:
+    image: ghidrathon:latest
+    platform: linux # Native arch
+    build:
+      context: .
+      target: ghidrathon
+    volumes:
+      - ./firmware:/surgeon/firmware:ro
+      - ./src:/surgeon/src:ro
+      - ./out:/surgeon/out:rw
+    deploy:
+      replicas: 0 # Don't start ghidrathon by default
+
+volumes:
+  pycache:
