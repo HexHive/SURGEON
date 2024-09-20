@@ -1,5 +1,5 @@
 project('surgeon', 'c',
-  meson_version: '>=1.1',
+  meson_version: '>=1.4.0',
   default_options: [
     'prefer_static=true',
     'strip=false',

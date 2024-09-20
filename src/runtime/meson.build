@@ -31,7 +31,7 @@ if py_dep.found()
 endif
 
 runtime_ldflags = ['-static',
-                  '-T', '@0@'.format(runtime_linker_script[0])]
+                  '-T', runtime_linker_script[0].full_path()]
 
 # Prevent runtime from using the D16/D17 floating point registers because we use
 # them for our MSP/PSP emulation
