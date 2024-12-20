@@ -14,7 +14,7 @@ export INSTR_CTRL_ADDR=${INSTR_CTRL_ADDR:-0xE0100000}
 export SHM_ADDR=${SHM_ADDR:-0xE0101000}
 
 # Update PYTHONPATH so that we can use our modules from anywhere in the system
-export PYTHONPATH=${PYTHONPATH}:${WORKDIR}
+export PYTHONPATH=${PYTHONPATH}:${WORKDIR}/src
 
 # Quit on errors
 set -ue
