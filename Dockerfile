@@ -12,7 +12,7 @@ ARG GHIDRATHON_URL=https://codeload.github.com/mandiant/Ghidrathon/tar.gz/refs/t
 ################################################################################
 # Download and decompress musl toolchain for use in the final SURGEON image    #
 ################################################################################
-FROM alpine:latest as musl-toolchain-downloader
+FROM alpine:latest AS musl-toolchain-downloader
 ARG MUSL_TOOLCHAIN
 
 # Download and decompression step because ADD cannot (yet) do both at once
@@ -26,7 +26,7 @@ RUN tar -xf /$MUSL_TOOLCHAIN.tgz
 # Using a different target allows us to make use of the Docker build cache for #
 # the final venv, avoiding the frequent rebuild of keystone-engine             #
 ################################################################################
-FROM --platform=linux/arm64 ubuntu:$UBUNTU_VERSION as python-builder
+FROM --platform=linux/arm64 ubuntu:$UBUNTU_VERSION AS python-builder
 
 # Enable APT package caching
 RUN rm -f /etc/apt/apt.conf.d/docker-clean && \
@@ -61,7 +61,7 @@ RUN --mount=type=bind,source=src,target=/src \
 ################################################################################
 # Final SURGEON debugger image                                                 #
 ################################################################################
-FROM ubuntu:$UBUNTU_VERSION as debugger
+FROM ubuntu:$UBUNTU_VERSION AS debugger
 
 # Enable APT package caching
 RUN rm -f /etc/apt/apt.conf.d/docker-clean && \
@@ -95,7 +95,7 @@ CMD ["/debugger-entrypoint.sh"]
 ################################################################################
 # Final SURGEON runner image                                                   #
 ################################################################################
-FROM --platform=linux/arm64 ubuntu:$UBUNTU_VERSION as runner
+FROM --platform=linux/arm64 ubuntu:$UBUNTU_VERSION AS runner
 ARG MUSL_TOOLCHAIN
 
 # Configure APT and DPKG for multiarch and package caching
@@ -140,7 +140,7 @@ CMD ["/runner-entrypoint.sh"]
 ################################################################################
 # Download and decompress ghidra(thon) for use in the final ghidrathon image   #
 ################################################################################
-FROM alpine:latest as ghidra-ghidrathon-downloader
+FROM alpine:latest AS ghidra-ghidrathon-downloader
 ARG GHIDRA_VERSION
 ARG GHIDRA_SHA
 ARG GHIDRA_URL
@@ -166,7 +166,7 @@ RUN echo "$GHIDRATHON_SHA  /ghidrathon.tar.gz" | sha256sum -c - && \
 ################################################################################
 # Ghidrathon image                                                             #
 ################################################################################
-FROM ubuntu:$UBUNTU_VERSION as ghidrathon
+FROM ubuntu:$UBUNTU_VERSION AS ghidrathon
 ARG GHIDRA_VERSION
 
 # Enable APT package caching
